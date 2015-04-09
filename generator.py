@@ -12,6 +12,7 @@ POSTS_FILE_EXTENSION = '.md'
 
 app = Flask(__name__)
 
+
 class Post(object):
     def __init__(self, path):
         self.path = path
@@ -31,9 +32,16 @@ class Post(object):
                 content += line
         self.__dict__.update(yaml.load(content))
 
+
+@app.template_filter('date')
+def format_date(value, formatting='%B %d, %Y'):
+    return value.strftime(formatting)
+
+
 @app.route('/')
 def index():
     return 'Hello, World!'
+
 
 @app.route('/blog/<path:path>')
 def post(path):
