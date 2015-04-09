@@ -6,6 +6,7 @@ from werkzeug import cached_property
 
 import markdown
 import os
+import yaml
 
 POSTS_FILE_EXTENSION = '.md'
 
