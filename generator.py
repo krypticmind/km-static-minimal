@@ -2,7 +2,7 @@
 
 from flask import Flask
 from flask import render_template
-from werkzeug import cached_property
+from werkzeug.utils import cached_property
 
 import markdown
 import os
@@ -46,8 +46,8 @@ def index():
 @app.route('/blog/<path:path>')
 def post(path):
     path = os.path.join('posts', path + POSTS_FILE_EXTENSION)
-    post = Post(path)
-    return render_template('post.html', post=post)
+    posting = Post(path)
+    return render_template('post.html', post=posting)
 
 if __name__ == '__main__':
     app.run(port=8000, debug=True)
