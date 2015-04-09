@@ -39,7 +39,7 @@ def index():
 def post(path):
     path = os.path.join('posts', path + POSTS_FILE_EXTENSION)
     post = Post(path)
-    return render_template('post.html', path=path)
+    return render_template('post.html', post=post)
 
 if __name__ == '__main__':
     app.run(port=8000, debug=True)
